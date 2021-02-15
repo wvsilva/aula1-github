@@ -1,0 +1,41 @@
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.Bank;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("Enter account number: ");
+		int number = sc.nextInt();
+		System.out.print("Enter account holder: ");
+		sc.nextLine();
+		String name = sc.nextLine();
+		System.out.print("Is there an initial deposit (y/n)? ");
+		char option = sc.next().charAt(0);
+		Bank user = new Bank(number, name);
+		if(option == 'y') {
+			System.out.print("how much will be  deposited? ");
+			double balance = sc.nextDouble();
+			user.bankDeposit(balance);
+		}
+		System.out.printf("%nAccount data: %n" + user);
+		
+		System.out.println();
+		System.out.print("Enter a deposit value: ");
+		user.bankDeposit(sc.nextDouble());
+		System.out.printf("%nUpdated account data: %n" + user);
+		
+		
+		
+		
+		sc.close();
+	}
+
+}

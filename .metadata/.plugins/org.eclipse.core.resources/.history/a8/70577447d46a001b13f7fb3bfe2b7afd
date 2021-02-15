@@ -1,0 +1,42 @@
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+import entities.Inn;
+
+public class Program {
+
+	public static void main(String[] args) {
+
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("How many rooms will be rented? ");
+		int rented = sc.nextInt();
+		Inn[] vect = new Inn[10];
+		sc.nextLine();
+
+		for (int i = 0; i < rented; i++) {
+
+			System.out.println();
+			System.out.printf("Rent #%d %n", i+1);
+			System.out.print("Name: ");
+			String name = sc.nextLine();
+			System.out.print("Email: ");
+			String email = sc.nextLine();
+			System.out.print("Romm: ");
+			int room = sc.nextInt();
+			sc.nextLine();
+			vect[room] = new Inn(name, email, room);
+		}
+		System.out.println();
+		System.out.println("Busy rooms:");
+
+		for (int b = 0; b < 9; b++) {
+			if (vect[b] != null) {
+				System.out.println(vect[b].toString());
+			}
+		}
+		sc.close();
+	}
+
+}
